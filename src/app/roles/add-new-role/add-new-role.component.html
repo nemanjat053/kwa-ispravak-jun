@@ -1,0 +1,33 @@
+<h3>Add new role</h3>
+<div class="d-flex justify-content-center">
+  <form (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="id">Id: </label>
+      <input
+        type="text"
+        class="form-control"
+        name="id"
+        [(ngModel)]="newRole.id"
+      />
+    </div>
+    <div class="form-group">
+      <label for="title">Title: </label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        [(ngModel)]="newRole.title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="role">Role: </label>
+      <input
+        type="text"
+        class="form-control"
+        name="role"
+        [(ngModel)]="newRole.role"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Add new role</button>
+  </form>
+</div>

@@ -1,0 +1,49 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">Roles</th>
+      <th scope="col" *ngIf="login.validateRoles(['ROLE_ADMIN'])">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <th scope="row">{{ u.id }}</th>
+      <td>{{ u.username }}</td>
+      <td>{{ u.password }}</td>
+      <td>{{ u.roles }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger"
+          *ngIf="login.validateRoles(['ROLE_ADMIN'])"
+          (click)="delete(u.id)"
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          class="btn btn-info"
+          *ngIf="login.validateRoles(['ROLE_ADMIN'])"
+          [routerLink]="['/users', u.id]"
+          style="color: white;"
+        >
+          Details
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button
+  class="btn btn-primary"
+  (click)="addNew()"
+  *ngIf="login.validateRoles(['ROLE_ADMIN'])"
+>
+  Add new user
+</button>
+
+<app-add-new-user *ngIf="formActive" [users]="users" (onSubmit)="save($event)">
+</app-add-new-user>
